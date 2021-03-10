@@ -9,14 +9,15 @@ import java.util.List;
 @Component
 public class UserDAOImp implements UserDAO {
     private List<User> userList;
+    private static int USER_ID;
 
     {
         userList = new ArrayList<>();
-        userList.add(new User(1, "Tyler", "Durden", 25, "durden@mail.com"));
-        userList.add(new User(2, "Jeffrey", "Lebowski", 42, "lebowski@mail.com"));
-        userList.add(new User(3, "Vito", "Corleone", 52, "corleone@mail.com"));
-        userList.add(new User(4, "John", "McClane", 38, "mcclane@mail.com"));
-        userList.add(new User(5, "Hans", "Gruber", 40, "gruber@mail.com"));
+        userList.add(new User(++USER_ID, "Tyler", "Durden", 25, "durden@mail.com"));
+        userList.add(new User(++USER_ID, "Jeffrey", "Lebowski", 42, "lebowski@mail.com"));
+        userList.add(new User(++USER_ID, "Vito", "Corleone", 52, "corleone@mail.com"));
+        userList.add(new User(++USER_ID, "John", "McClane", 38, "mcclane@mail.com"));
+        userList.add(new User(++USER_ID, "Hans", "Gruber", 40, "gruber@mail.com"));
     }
 
     @Override
