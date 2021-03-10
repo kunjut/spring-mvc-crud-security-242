@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface UserDAO {
     List<User> index();
-    User show();
+    User show(int id);
 }
