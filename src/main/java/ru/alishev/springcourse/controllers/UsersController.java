@@ -25,9 +25,8 @@ public class UsersController {
     // GET метод show по адресу /users/:id
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model) {
-        // строка для отладки
-        System.out.println("в методе show");
         // из DAO будем получать одного user по id
+        System.out.println(userDAO.show(id));
         return null;
     }
 }
