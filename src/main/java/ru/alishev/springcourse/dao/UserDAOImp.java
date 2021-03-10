@@ -26,6 +26,12 @@ public class UserDAOImp implements UserDAO {
 
     @Override
     public User show(int id) {
-        return null;
+        return userList.stream()
+                // лямбда фильтрующая user по id
+                .filter(user -> user.getId() == id)
+                // вернем что нашлось
+                .findAny()
+                // если id не найден вернется null
+                .orElse(null);
     }
 }
