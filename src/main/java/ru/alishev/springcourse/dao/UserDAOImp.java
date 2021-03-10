@@ -19,7 +19,7 @@ public class UserDAOImp implements UserDAO {
 
     @Override
     public List<User> index() {
-        return null;
+        return userList;
     }
 
     @Override
