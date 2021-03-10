@@ -17,16 +17,16 @@ public class UsersController {
     // GET метод index по адресу /users
     @GetMapping
     public String index(Model model) {
-        // из DAO будем получать всех user
-        System.out.println(userDAO.index());
+        // из DAO получаем всех user, пакуем в модель
+        model.addAttribute("users", userDAO.index());
         return "users/index";
     }
 
     // GET метод show по адресу /users/:id
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model) {
-        // из DAO будем получать одного user по id
-        System.out.println(userDAO.show(id));
+        // из DAO получаем одного user по id, пакуем в модель
+        model.addAttribute("user", userDAO.show(id));
         return "users/show";
     }
 }
