@@ -27,7 +27,9 @@
     </style>
 </head>
 <body>
-<a href="#">Create new user</a>
+<p>
+    <a href="#">Create new user</a>
+</p>
 <table>
     <thead>
     <tr>
@@ -47,8 +49,8 @@
             <td th:text="${user.getSurname()}"></td>
             <td th:text="${user.getAge()}"></td>
             <td th:text="${user.getEmail()}"></td>
-            <td>Edit</td>
-            <td>Delete</td>
+            <td><a th:href="@{#}">Edit</a></td>
+            <td><a th:href="@{#}">Delete</a></td>
         </tr>
     </tbody>
 </table>
