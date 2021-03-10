@@ -16,14 +16,13 @@ public class UserDAOImp implements UserDAO {
      userList.add(new User(4, "John", "McClane", 38, "i.prince@mail.com"));
      userList.add(new User(5, "Hans", "Gruber", 40, "b.smith@mail.com"));
     }
-
     @Override
     public List<User> index() {
         return null;
     }
 
     @Override
-    public User show() {
+    public User show(int id) {
         return null;
     }
 }
