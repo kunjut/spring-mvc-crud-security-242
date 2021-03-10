@@ -19,7 +19,7 @@ public class UsersController {
     public String index(Model model) {
         // из DAO будем получать всех user
         System.out.println(userDAO.index());
-        return null;
+        return "users/index";
     }
 
     // GET метод show по адресу /users/:id
@@ -27,6 +27,6 @@ public class UsersController {
     public String show(@PathVariable("id") int id, Model model) {
         // из DAO будем получать одного user по id
         System.out.println(userDAO.show(id));
-        return null;
+        return "users/show";
     }
 }
