@@ -4,9 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.alishev.springcourse.dao.UserDAO;
+import ru.alishev.springcourse.models.User;
 
 @Controller
 @RequestMapping("/users")
@@ -28,5 +30,12 @@ public class UsersController {
         // из DAO получаем одного user по id, пакуем в модель
         model.addAttribute("user", userDAO.show(id));
         return "users/show";
+    }
+
+    // GET метод newUser по адресу /users/new
+    @GetMapping("/new")
+    public String newUser(@ModelAttribute("user") User user) {
+
+        return "users/new";
     }
 }
