@@ -6,13 +6,13 @@ public class User {
     private int id;
     private String name;
     private String surname;
-    private int age;
+    private Integer age;
     private String email;
 
     public User() {
     }
 
-    public User(int id, String name, String surname, int age, String email) {
+    public User(int id, String name, String surname, Integer age, String email) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -44,11 +44,11 @@ public class User {
         this.surname = surname;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
@@ -77,7 +77,7 @@ public class User {
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
         return id == user.id &&
-                age == user.age &&
+                age.equals(user.age) &&
                 name.equals(user.name) &&
                 surname.equals(user.surname) &&
                 email.equals(user.email);
