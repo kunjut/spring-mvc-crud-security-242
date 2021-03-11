@@ -3,10 +3,7 @@ package ru.alishev.springcourse.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import ru.alishev.springcourse.dao.UserDAO;
 import ru.alishev.springcourse.models.User;
 
@@ -37,5 +34,13 @@ public class UsersController {
     public String newUser(@ModelAttribute("user") User user) {
 
         return "users/new";
+    }
+
+    // POST метод create по адресу /users
+    @PostMapping()
+    public String create(@ModelAttribute("user") User user) {
+        userDAO.save(user);
+
+        return "redirect:/users";
     }
 }
