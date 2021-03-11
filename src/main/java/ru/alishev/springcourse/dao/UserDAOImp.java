@@ -35,4 +35,10 @@ public class UserDAOImp implements UserDAO {
                 // если id не найден вернется null
                 .orElse(null);
     }
+
+    @Override
+    public void save(User user) {
+        user.setId(++USER_ID);
+        userList.add(user);
+    }
 }
