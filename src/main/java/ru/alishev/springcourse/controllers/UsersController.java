@@ -59,4 +59,12 @@ public class UsersController {
 
         return "redirect:/users";
     }
+
+    // DELETE метод delete users/:id
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable("id") int id) {
+        userDAO.delete(id);
+
+        return "redirect:/users";
+    }
 }
