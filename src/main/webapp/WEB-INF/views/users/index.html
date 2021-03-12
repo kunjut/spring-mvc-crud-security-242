@@ -9,7 +9,6 @@
         }
         TABLE {
             border-collapse: collapse; /* Убираем двойные линии между ячейками */
-            width: 50%; /* Ширина таблицы */
         }
         TH {
             background: #6eb441; /* Цвет фона ячейки */
@@ -21,15 +20,20 @@
             text-align: left; /* Выравнивание по центру */
         }
         TH, TD {
-            border: 1px solid black; /* Параметры рамки */
+            border: 1px solid #c6c6c6; /* Параметры рамки */
             padding: 4px; /* Поля вокруг текста */
+        }
+        FORM {
+            display: inline;
         }
     </style>
 </head>
 <body>
-<p>
-    <a th:href="@{/users/new}">Create new user</a>
-</p>
+    <p>
+        <form th:method="GET" th:action="@{/users/new}">
+            <input type="submit" value="Create new user">
+        </form>
+    </p>
 <table>
     <thead>
     <tr>
@@ -49,8 +53,12 @@
             <td th:text="${user.getAge()}"></td>
             <td th:text="${user.getEmail()}"></td>
             <td>
-                <a th:href="@{/users/{id}/edit(id=${user.getId()})}">Edit</a>
-                <a th:href="@{#}">Delete</a>
+                <form th:method="GET" th:action="@{/users/{id}/edit(id=${user.getId()})}">
+                    <input type="submit" value="Edit">
+                </form>
+                <form th:method="DELETE" th:action="@{/users/{id}(id=${user.getId()})}">
+                    <input type="submit" value="Delete">
+                </form>
             </td>
         </tr>
     </tbody>
