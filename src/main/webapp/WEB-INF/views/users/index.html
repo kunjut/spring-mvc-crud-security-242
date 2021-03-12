@@ -38,8 +38,7 @@
         <th>Surname</th>
         <th>Age</th>
         <th>Email</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        <th>Operations</th>
     </tr>
     </thead>
     <tbody>
@@ -49,8 +48,10 @@
             <td th:text="${user.getSurname()}"></td>
             <td th:text="${user.getAge()}"></td>
             <td th:text="${user.getEmail()}"></td>
-            <td><a th:href="@{#}">Edit</a></td>
-            <td><a th:href="@{#}">Delete</a></td>
+            <td>
+                <a th:href="@{/users/{id}/edit(id=${user.getId()})}">Edit</a>
+                <a th:href="@{#}">Delete</a>
+            </td>
         </tr>
     </tbody>
 </table>
