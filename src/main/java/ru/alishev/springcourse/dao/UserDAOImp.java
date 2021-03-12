@@ -50,4 +50,9 @@ public class UserDAOImp implements UserDAO {
         userToBeUpdated.setAge(updatedUser.getAge());
         userToBeUpdated.setEmail(updatedUser.getEmail());
     }
+
+    @Override
+    public void delete(int id) {
+        userList.removeIf(user -> user.getId() == id);
+    }
 }
