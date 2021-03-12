@@ -51,4 +51,12 @@ public class UsersController {
 
         return "users/edit";
     }
+
+    // PATCH метод update users/:id
+    @PatchMapping("/{id}")
+    public String update(@PathVariable("id") int id, User user) {
+        userDAO.update(id, user);
+
+        return "redirect:/users";
+    }
 }
