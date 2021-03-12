@@ -43,4 +43,12 @@ public class UsersController {
 
         return "redirect:/users";
     }
+
+    // GET метод edit users/:id/edit
+    @GetMapping("/{id}/edit")
+    public String edit(@PathVariable int id, Model model) {
+        model.addAttribute("user", userDAO.show(id));
+
+        return "users/edit";
+    }
 }
