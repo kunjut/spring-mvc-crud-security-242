@@ -3,14 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="'User info: ' + ${user.getName()} + ' ' + ${user.getSurname()}"></title>
-    <style type="text/css">
-        BODY {
-            font-family: Consolas, serif;
-        }
-        FORM {
-            display: inline;
-        }
-    </style>
+    <link href="/static/css/main.css" rel="stylesheet" />
 </head>
 <body>
     <h1 th:text="${user.getName()} + ' ' + ${user.getSurname()}"></h1>
@@ -19,7 +12,7 @@
     <p th:text="'Email: ' + ${user.getEmail()}"></p>
     <hr>
 
-    <form th:method="PATCH" th:action="@{/users/{id}(id=${user.getId()})}">
+    <form th:method="GET" th:action="@{/users/{id}/edit(id=${user.getId()})}">
         <input type="submit" value="Edit">
     </form>
     <form th:method="DELETE" th:action="@{/users/{id}(id=${user.getId()})}">
