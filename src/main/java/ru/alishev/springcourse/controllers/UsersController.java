@@ -31,14 +31,14 @@ public class UsersController {
 
     // GET метод newUser по адресу /users/new
     @GetMapping("/new")
-    public String newUser(@ModelAttribute("user") User user) {
+    public String newUser(User user) {
 
         return "users/new";
     }
 
     // POST метод create по адресу /users
     @PostMapping()
-    public String create(@ModelAttribute("user") User user) {
+    public String create(User user) {
         userDAO.save(user);
 
         return "redirect:/users";
