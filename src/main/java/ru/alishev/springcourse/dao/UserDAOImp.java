@@ -3,56 +3,42 @@ package ru.alishev.springcourse.dao;
 import org.springframework.stereotype.Repository;
 import ru.alishev.springcourse.models.User;
 
-import java.util.ArrayList;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Repository
 public class UserDAOImp implements UserDAO {
-    private List<User> userList;
-    private static int USER_ID;
-
-    {
-        userList = new ArrayList<>();
-        userList.add(new User(++USER_ID, "Tyler", "Durden", 25, "durden@mail.com"));
-        userList.add(new User(++USER_ID, "Jeffrey", "Lebowski", 42, "lebowski@mail.com"));
-        userList.add(new User(++USER_ID, "Vito", "Corleone", 52, "corleone@mail.com"));
-        userList.add(new User(++USER_ID, "John", "McClane", 38, "mcclane@mail.com"));
-        userList.add(new User(++USER_ID, "Hans", "Gruber", 40, "gruber@mail.com"));
-    }
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Override
     public List<User> index() {
-        return userList;
+        return entityManager.createQuery(
+                "select u from User u", User.class)
+                .getResultList();
     }
 
     @Override
     public User show(int id) {
-        return userList.stream()
-                // лямбда фильтрующая user по id
-                .filter(user -> user.getId() == id)
-                // вернем что нашлось
-                .findAny()
-                // если id не найден вернется null
-                .orElse(null);
+        TypedQuery<User> query = entityManager.createQuery("select u from User u where u.id=:id", User.class);
+        query.setParameter("id", id);
+        return query.getSingleResult();
     }
 
     @Override
     public void save(User user) {
-        user.setId(++USER_ID);
-        userList.add(user);
+        entityManager.persist(user);
     }
 
     @Override
     public void update(int id, User updatedUser) {
-        User userToBeUpdated = show(id);
-        userToBeUpdated.setName(updatedUser.getName());
-        userToBeUpdated.setSurname(updatedUser.getSurname());
-        userToBeUpdated.setAge(updatedUser.getAge());
-        userToBeUpdated.setEmail(updatedUser.getEmail());
+        entityManager.merge(updatedUser);
     }
 
     @Override
     public void delete(int id) {
-        userList.removeIf(user -> user.getId() == id);
+        entityManager.remove(show(id));
     }
 }
