@@ -1,4 +1,4 @@
-package ru.alishev.service;
+package ru.alishev.springcourse.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

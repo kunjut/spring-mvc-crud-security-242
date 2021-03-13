@@ -1,4 +1,4 @@
-package ru.alishev.service;
+package ru.alishev.springcourse.service;
 
 import ru.alishev.springcourse.models.User;
 
