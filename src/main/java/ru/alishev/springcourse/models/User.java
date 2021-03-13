@@ -1,12 +1,21 @@
 package ru.alishev.springcourse.models;
 
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
+@Table(name="users")
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column
     private String name;
+    @Column
     private String surname;
+    @Column
     private Integer age;
+    @Column
     private String email;
 
     public User() {
