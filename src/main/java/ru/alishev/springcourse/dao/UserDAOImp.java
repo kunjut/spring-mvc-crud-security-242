@@ -1,12 +1,12 @@
 package ru.alishev.springcourse.dao;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import ru.alishev.springcourse.models.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+@Repository
 public class UserDAOImp implements UserDAO {
     private List<User> userList;
     private static int USER_ID;
