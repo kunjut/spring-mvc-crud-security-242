@@ -21,7 +21,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public User show(int id) {
+    public User show(Long id) {
         TypedQuery<User> query = entityManager.createQuery("select u from User u where u.id=:id", User.class);
         query.setParameter("id", id);
         return query.getSingleResult();
@@ -33,12 +33,19 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public void update(int id, User updatedUser) {
+    public void update(Long id, User updatedUser) {
         entityManager.merge(updatedUser);
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(Long id) {
         entityManager.remove(show(id));
+    }
+
+    @Override
+    public User getUserByName(String username) {
+        return entityManager.createQuery("select u from User u where u.username=:username", User.class)
+                .setParameter("username", username)
+                .getSingleResult();
     }
 }
